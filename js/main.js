@@ -65,6 +65,7 @@ const APP = {
     // Append the new <p> element to the body
     // document.body.appendChild(newParagraph);
     APP.outputDiv.appendChild(newParagraph);
+    APP.copyContent();
   },
 
   copyContent: () => {

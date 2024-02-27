@@ -8,11 +8,25 @@
     <script type="module" src="./js/main.js"></script>
   </head>
   <body>
-    <label for="textbox">Enter Text:</label>
-    <textarea id="textbox" name="textbox" rows="4"></textarea>
-    <button id="button">Submit</button>
-    <div id="content" style="display: none"></div>
-    <div id="copyContent"></div>
-    <button id="copyButton">Copy</button>
+    <header class="masthead">
+      <h1>Technical Information Tool</h1>
+    </header>
+    <main>
+      <div class="grid">
+        <div class="col1">
+          <h4>Use this box to PASTE the text</h4>
+          <div class="pasteContent" contenteditable="true">
+            Insert the Copied Content Here
+          </div>
+          <button class="btn submit" id="button">Submit</button>
+          <div id="content" style="display: none"></div>
+        </div>
+        <div class="col1">
+          <h4>Use this box to COPY the text</h4>
+          <div class="copyContent" id="copyContent">Results...</div>
+          <button class="btn copy" id="copyButton">Copy</button>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

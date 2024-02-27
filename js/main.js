@@ -3,7 +3,8 @@
 */
 
 const APP = {
-  textbox: document.querySelector("#textbox"),
+  textbox: document.querySelector('div[contenteditable="true"]').innerHTML,
+  tempDiv: document.querySelector("#content"),
   button: document.querySelector("#button"),
   outputDiv: document.querySelector("#copyContent"),
   copyButton: document.querySelector("#copyButton"),
@@ -22,12 +23,13 @@ const APP = {
   },
 
   createHtml: () => {
-    // get the div with the id content
-    const div = document.querySelector("#content");
+    APP.textbox = document.querySelector(
+      'div[contenteditable="true"]'
+    ).innerHTML;
     // clear the previous content
-    div.innerHTML = "";
+    APP.tempDiv.innerHTML = "";
     // set the innerHTML of the div to the value of the textbox
-    div.innerHTML = APP.textbox.value;
+    APP.tempDiv.innerHTML = APP.textbox;
     // call the getValues function
     APP.getValues();
   },
@@ -35,40 +37,34 @@ const APP = {
   getValues: () => {
     // clear the previous content
     APP.outputDiv.innerHTML = "";
-    // get all the strong tags
-    let strongTags = document.querySelectorAll("strong");
-    // loop through the strong tags
-    strongTags.forEach((strong, index) => {
-      if (!strong.innerText.includes(":")) {
-        // check if it's the first element
-        if (index === 0) {
-          // if it's the first element, add a line before the strong tag
-          let line = document.createElement("hr");
-          APP.outputDiv.appendChild(line);
-        }
+    // Create the new <p> structure
+    const newParagraph = document.createElement("p");
 
-        // create a new strong tag
-        let strongTag = document.createElement("strong");
-        // set the innerHTML of the new strong tag to the innerHTML of the current strong tag with : at the end
-        strongTag.innerHTML = `${strong.innerHTML}: `;
-        // append the new strong tag to the outputDiv
-        APP.outputDiv.appendChild(strongTag);
+    // Iterate through each row in the table and create the corresponding <strong> and <hr> elements
+    const rows = APP.tempDiv.querySelectorAll("tr");
+    rows.forEach((row) => {
+      const cells = row.querySelectorAll("td");
+      const strongText = cells[0].innerText.trim();
+      const spanText = cells[1].innerText.trim();
 
-        // get the text content of the next sibling of the current strong tag
-        let text = strong.nextSibling.textContent;
-        // create a new span tag
-        let span = document.createElement("span");
-        // set the innerHTML of the new span tag to the text content
-        span.innerHTML = text;
-        // append the new span tag to the outputDiv
-        APP.outputDiv.appendChild(span);
+      // Create <strong> element
+      const strongElement = document.createElement("strong");
+      strongElement.innerText = `${strongText}: `;
 
-        // create a new line element
-        let line = document.createElement("hr");
-        // append the new line element to the outputDiv
-        APP.outputDiv.appendChild(line);
-      }
+      // Create <span> element
+      const spanElement = document.createElement("span");
+      spanElement.innerText = spanText;
+
+      // Append <hr>, <strong>, <span> to the new <p> element
+      newParagraph.appendChild(document.createElement("hr"));
+      newParagraph.appendChild(strongElement);
+      newParagraph.appendChild(spanElement);
     });
+    newParagraph.appendChild(document.createElement("hr"));
+
+    // Append the new <p> element to the body
+    // document.body.appendChild(newParagraph);
+    APP.outputDiv.appendChild(newParagraph);
   },
 
   copyContent: () => {

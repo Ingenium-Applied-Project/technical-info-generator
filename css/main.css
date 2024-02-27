@@ -1,46 +1,81 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 20px;
   text-align: center;
-  background-color: #f4f4f4;
+  margin: 0;
 }
 
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #333;
+.masthead {
+  padding: 1rem;
+  background-color: #0e1c39;
+  color: white;
 }
 
-textarea {
-  padding: 10px;
-  font-size: 14px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.col1 {
+  grid-column: span 1;
+}
+
+.col2 {
+  grid-column: span 2;
+}
+
+.full-col {
+  grid-column: 1 / -1;
+}
+
+.pasteContent,
+.copyContent {
+  padding: 2rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  border: 0.075rem solid #ccc;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  min-height: 12rem; /* Set a minimum height */
+  outline: none; /* Remove default outline for contenteditable */
+  text-align: left;
 }
 
-button {
-  padding: 12px 20px;
-  font-size: 18px;
-  background-color: #4caf50;
+.btn {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.75rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-button:hover {
-  background-color: #45a049;
+.btn.submit {
+  background-color: #76c079;
+  color: black;
 }
 
-#content,
-#copyContent {
-  text-align: left;
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+.btn.submit:hover {
+  background-color: #285b2c;
+  color: white;
+}
+
+.btn.copy {
+  background-color: #7aa6ed;
+  color: black;
+}
+
+.btn.copy:hover {
+  background-color: #1f4596;
+  color: white;
+}
+
+@media only screen and (min-width: 55em) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

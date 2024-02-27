@@ -8,6 +8,11 @@ const APP = {
   button: document.querySelector("#button"),
   outputDiv: document.querySelector("#copyContent"),
   copyButton: document.querySelector("#copyButton"),
+  artifactName: document.querySelector("#artifactName"),
+  artifactArea: document.querySelector("#artifactArea"),
+  language: document.querySelector("#language"),
+  fileName: document.querySelector("#fileName"),
+  extension: document.querySelector("#extension"),
 
   init: () => {
     console.log("APP initialized");
@@ -20,9 +25,35 @@ const APP = {
     APP.button.addEventListener("click", APP.createHtml);
     // add event listener to the copy button
     APP.copyButton.addEventListener("click", APP.copyContent);
+    // add event listener to the artifactName input
+    APP.artifactName.addEventListener("input", APP.updateFileName);
+    // add event listener to the artifactArea input
+    APP.artifactArea.addEventListener("change", APP.updateFileName);
+    // add event listener to the language input
+    APP.language.addEventListener("change", APP.updateFileName);
+    // add event listener to the extension input
+    APP.extension.addEventListener("change", APP.updateFileName);
+  },
+
+  updateFileName: () => {
+    // get the value of the artifactName, artifactArea, and language
+    const artifactName = APP.artifactName.value;
+    const artifactArea = APP.artifactArea.value;
+    const language = APP.language.value;
+    const extension = APP.extension.value;
+    // create an array of numbers
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    // clear the previous content
+    APP.fileName.innerHTML = "";
+    // iterate through the array and create the file name
+    arr.forEach((index) => {
+      const fileName = `WA-${artifactName}-${index}-Exhibition-${artifactArea}-${language}${extension}`;
+      APP.fileName.innerHTML += `${fileName} <br>`;
+    });
   },
 
   createHtml: () => {
+    // set the value of the textbox to the innerHTML of the div
     APP.textbox = document.querySelector(
       'div[contenteditable="true"]'
     ).innerHTML;

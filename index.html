@@ -9,22 +9,72 @@
   </head>
   <body>
     <header class="masthead">
-      <h1>Technical Information Tool</h1>
+      <h1>Technical Information & File Name Tool</h1>
     </header>
     <main>
       <div class="grid">
+        <div class="col1 flexbox">
+          <div class="artifactForm grid">
+            <div class="col1">
+              <label for="artifactName">Artifact Name</label>
+              <input type="text" id="artifactName" />
+            </div>
+            <div class="col1">
+              <label for="artifactArea">Artifact Area</label>
+              <select name="artifactArea" id="artifactArea">
+                <option value="Hangar">Hangar</option>
+              </select>
+            </div>
+            <div class="col1">
+              <label for="language">Language</label>
+              <select name="language" id="language">
+                <option value="EN">English</option>
+                <option value="FR">French</option>
+                <option value="EN-BI">English - Bilingual</option>
+                <option value="FR-BI">French - Bilingual</option>
+              </select>
+            </div>
+            <div class="col1">
+              <label for="extension">Extension</label>
+              <select name="extension" id="extension">
+                <option value=".webp">WEBP</option>
+                <option value=".png">PNG</option>
+                <option value=".jpg">JPG</option>
+                <option value=".jpeg">JPEG</option>
+                <option value=".gif">GIF</option>
+                <option value=".apng">APNG</option>
+                <option value=".bmp">BMP</option>
+                <option value=".raw">RAW</option>
+                <option value=".tiff">TIFF</option>
+                <option value=".heic">HEIC</option>
+                <option value=".heif">HEIF</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col1 flexbox">
+          <div class="copyContent" id="fileName">
+            WA - [Aircraft][Index] - [Area - Name] - [Language].[Format]
+          </div>
+        </div>
+      </div>
+      <div class="grid">
         <div class="col1">
-          <h4>Use this box to PASTE the text</h4>
+          <div class="box">
+            <h4 class="boxTitle">Use this box to PASTE the text</h4>
+            <button class="btn submit" id="button">Submit</button>
+          </div>
           <div class="pasteContent" contenteditable="true">
             Insert the Copied Content Here
           </div>
-          <button class="btn submit" id="button">Submit</button>
           <div id="content" style="display: none"></div>
         </div>
         <div class="col1">
-          <h4>Use this box to COPY the text</h4>
+          <div class="box">
+            <h4 class="boxTitle">Use this box to COPY the text</h4>
+            <button class="btn copy" id="copyButton">Copy</button>
+          </div>
           <div class="copyContent" id="copyContent">Results...</div>
-          <button class="btn copy" id="copyButton">Copy</button>
         </div>
       </div>
     </main>

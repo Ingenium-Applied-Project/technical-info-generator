@@ -35,7 +35,8 @@ body {
   align-items: center;
 }
 
-.artifactForm {
+.artifactForm,
+.copyContent {
   flex: 1;
   align-items: center;
 }

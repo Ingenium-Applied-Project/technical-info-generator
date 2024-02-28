@@ -37,7 +37,7 @@ const APP = {
 
   updateFileName: () => {
     // get the value of the artifactName, artifactArea, and language
-    const artifactName = APP.artifactName.value;
+    const artifactName = APP.artifactName.value.trim();
     const artifactArea = APP.artifactArea.value;
     const language = APP.language.value;
     const extension = APP.extension.value;

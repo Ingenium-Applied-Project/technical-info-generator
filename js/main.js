@@ -37,7 +37,7 @@ const APP = {
 
   updateFileName: () => {
     // get the value of the artifactName, artifactArea, and language
-    const artifactName = APP.artifactName.value.trim();
+    const artifactName = APP.artifactName.value;
     const artifactArea = APP.artifactArea.value;
     const language = APP.language.value;
     const extension = APP.extension.value;
@@ -48,7 +48,7 @@ const APP = {
     // iterate through the array and create the file name
     arr.forEach((index) => {
       const fileName = `WA-${artifactName}-${index}-Exhibition-${artifactArea}-${language}${extension}`;
-      APP.fileName.innerHTML += `${fileName} <br>`;
+      APP.fileName.innerHTML += `${fileName.replace(/\s+/g, "")} <br>`;
     });
   },
 
